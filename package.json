@@ -1,0 +1,24 @@
+{
+  "name": "brain-game",
+  "version": "1.0.0",
+  "description": "deepen your brain with some games ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JO901/brain-game.git"
+  },
+  "author": "Jayson Sanon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JO901/brain-game/issues"
+  },
+  "homepage": "https://github.com/JO901/brain-game#readme",
+  "devDependencies": {
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4"
+  }
+}
