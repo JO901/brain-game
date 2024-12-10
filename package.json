@@ -2,10 +2,12 @@
   "name": "brain-game",
   "version": "1.0.0",
   "description": "deepen your brain with some games ",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
+    "start": "node ./backend/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "dev": "webpack serve --open"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,19 @@
   },
   "homepage": "https://github.com/JO901/brain-game#readme",
   "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "babel-loader": "^9.2.1",
     "webpack": "^5.97.1",
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^8.17.10",
+    "@types/three": "^0.170.0",
+    "express": "^4.21.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.171.0"
   }
 }

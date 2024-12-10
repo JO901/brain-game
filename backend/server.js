@@ -8,8 +8,6 @@ console.log(__dirname);
 // statically serve everything in the build folder on the route '/build'
 app.use('/build', express.static(path.join(__dirname, '../build')));
 
-//app.use(express.static('../build/'));
-
 
 // serve index.html on the route '/'
 app.get('/', (req, res) => {
