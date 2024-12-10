@@ -1,4 +1,5 @@
 const path = require('path');
+const htmlplugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './frontend/main.js',
@@ -6,7 +7,15 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
   },
-  mode: 'production',
+  mode: 'development',
+  plugins: [new htmlplugin({
+    template: "./frontend/main.html"
+    })],
+  devServer: {
+    static: {
+      directory: path.join(__dirname, './build'),
+    },
+  },
   module: {
     rules: [
       {
@@ -24,17 +33,17 @@ module.exports = {
       /**
        * get css working!
        */
-    //   {
-    //     // added the dollar sign
-    //     test: /\.scss$/,
-    //     use: {
-    //       loader: 'css-loader',
-    //       options: {
-    //         // targets: 'defaults',
-    //         presets: ['sass-loader'],
-    //       },
-    //     },
-    //   }
+      //   {
+      //     // added the dollar sign
+      //     test: /\.scss$/,
+      //     use: {
+      //       loader: 'css-loader',
+      //       options: {
+      //         // targets: 'defaults',
+      //         presets: ['sass-loader'],
+      //       },
+      //     },
+      //   }
     ],
   },
 };

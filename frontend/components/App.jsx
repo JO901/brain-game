@@ -1,8 +1,8 @@
-import Cube from './three_components/Cube.jsx';
+import React from "react";
 
 const App = () => {
   return (
-      <Cube />
+     <h1>React is working</h1>
   );
 };
 
