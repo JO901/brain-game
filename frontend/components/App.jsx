@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router";
 import SignedIn from './SignedIn.jsx';
 import LogIn from './LogIn.jsx';
-import { Main } from './Main.jsx';
+import Main from './Main.jsx';
 
 const App = () => {
 

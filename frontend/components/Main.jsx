@@ -1,7 +1,7 @@
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
 
-export function Main() {
+function Main() {
   return (
     <div id='canvas-container'>
       <Canvas>
@@ -15,3 +15,5 @@ export function Main() {
     </div>
   );
 }
+
+export default Main
