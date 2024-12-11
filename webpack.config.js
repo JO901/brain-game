@@ -12,6 +12,12 @@ module.exports = {
     template: "./frontend/main.html"
     })],
   devServer: {
+    proxy: [
+      {
+        context: ['/api'],
+        target: 'http://localhost:3000',
+      },
+    ],
     static: {
       directory: path.join(__dirname, './build'),
     },
