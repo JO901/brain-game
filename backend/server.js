@@ -27,9 +27,17 @@ app.get('/api/get', async (req, res) => {
   }
 });
 
-app.use((req, res) =>
-  res.status(404).send("This is not the page you're looking for...")
-);
+// app.use('/api/Misc', (req, res) =>
+//   res.status(404).send("This is not the page you're looking for...")
+// );
+
+// app.get('/*', function(req, res) {
+//   res.sendFile(path.join(__dirname, '../frontend/main.html'), function(err) {
+//     if (err) {
+//       res.status(500).send(err)
+//     }
+//   })
+// })
 
 /**
  * express error handler

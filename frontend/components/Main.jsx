@@ -1,16 +1,27 @@
 import { render } from '@react-three/fiber';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react';
 import { redirect } from 'react-router-dom';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { setSize, Resizer } from '../systems/resizer';
+import image from '../../build/src/space.jpg';
+import Popup from 'reactjs-popup';
+import { useLocation } from 'react-router-dom';
 
 function Main() {
+  const location = useLocation();
+  console.log(location.pathname);
+
+  const [open, setOpen] = useState(true);
+  const closeModal = () => setOpen(false);
+
   useEffect(() => {
     // scene
+    const texture = new THREE.TextureLoader();
+    texture.colorSpace = THREE.LinearSRGBColorSpace;
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color('skyblue');
+    scene.background = texture.load();
 
     // camera
     const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
@@ -58,10 +69,54 @@ function Main() {
     const cube7 = createCube('blue');
     const cube8 = createCube('red');
 
+    const cube10 = createCube('purple');
+    const cube11 = createCube('blue');
+    const cube12 = createCube('red');
+    const cube13 = createCube('purple');
+    const cube14 = createCube('blue');
+    const cube15 = createCube('red');
+    const cube16 = createCube('purple');
+    const cube17 = createCube('blue');
+    const cube18 = createCube('red');
+
+    const cube19 = createCube('purple');
+    const cube20 = createCube('blue');
+    const cube21 = createCube('red');
+    const cube22 = createCube('purple');
+    const cube23 = createCube('blue');
+    const cube24 = createCube('red');
+    const cube25 = createCube('purple');
+    const cube26 = createCube('blue');
+    const cube27 = createCube('red');
+
     cube2.position.set(1, 0, 0);
     cube3.position.set(-1, 0, 0);
-    cube4.position.set(0, 1, 0);
-    cube5.position.set(0, 1, 1);
+    cube4.position.set(0, 0, 0);
+    cube.position.set(1, 1, 0);
+    cube5.position.set(-1, 1, 0);
+    cube6.position.set(0, 1, 0);
+    cube9.position.set(1, -1, 0);
+    cube7.position.set(-1, -1, 0);
+    cube8.position.set(0, -1, 0);
+
+    cube10.position.set(1, 0, -1);
+    cube11.position.set(-1, 0, -1);
+    cube12.position.set(0, 0, -1);
+    cube13.position.set(1, 1, -1);
+    cube14.position.set(-1, 1, -1);
+    cube15.position.set(0, 1, -1);
+    cube16.position.set(1, -1, -1);
+    cube17.position.set(-1, -1, -1);
+    cube18.position.set(0, -1, -1);
+    cube19.position.set(1, 0, -2);
+    cube20.position.set(-1, 0, -2);
+    cube21.position.set(0, 0, -2);
+    cube22.position.set(1, 1, -2);
+    cube23.position.set(-1, 1, -2);
+    cube24.position.set(0, 1, -2);
+    cube25.position.set(1, -1, -2);
+    cube26.position.set(-1, -1, -2);
+    cube27.position.set(0, -1, -2);
 
     // scene add
     scene.add(
@@ -75,7 +130,25 @@ function Main() {
       cube6,
       cube7,
       cube8,
-      cube9
+      cube9,
+      cube10,
+      cube11,
+      cube12,
+      cube13,
+      cube14,
+      cube15,
+      cube16,
+      cube17,
+      cube18,
+      cube19,
+      cube20,
+      cube21,
+      cube22,
+      cube23,
+      cube24,
+      cube25,
+      cube26,
+      cube27
     );
 
     // Orbit
@@ -113,6 +186,10 @@ function Main() {
       // }
       //console.log('clicked');
 
+      function pop() {
+        setOpen((o) => !o);
+      }
+
       if (intersects.length > 0) {
         if (intersects[0].object) {
           console.log(intersects[0].object);
@@ -127,12 +204,18 @@ function Main() {
       window.addEventListener('pointermove', onPointerMove);
       window.addEventListener('click', hover);
       window.requestAnimationFrame(animate);
-    //   window.addEventListener('resize', () => {
-    //     // set the size again if a resize occurs
-    //     setSize(canvas, camera, renderer);
-    //   });
+      //   window.addEventListener('resize', () => {
+      //     // set the size again if a resize occurs
+      //     setSize(canvas, camera, renderer);
+      //   });
     };
     animate();
+
+    return () => {
+        // Anything in here is fired on component unmount.
+        document.body.removeChild(renderer.domElement);
+    }
+
   }, []);
 
   const containerStyle = {
@@ -144,7 +227,7 @@ function Main() {
 
   return (
     <div>
-      <canvas id='canvas' />
+      <canvas id='canvas'/>
     </div>
   );
 }

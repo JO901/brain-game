@@ -17,9 +17,6 @@ const SignedIn = () => {
       <div>
         <h1>React is working</h1>
         <button onClick={getdatabase}>Click</button>
-        <button>take me to login</button>
-        <Link to={'/Login'}>Login</Link>;
-        <Link to={'/Main'}>Main</Link>;
       </div>
     );
   };
