@@ -20,12 +20,48 @@ app.use('/build', express.static(path.join(__dirname, '../build')));
 app.get('/api/get', async (req, res) => {
   try {
     const people = await models.User.find({}).exec();
-    console.log(people)
+    console.log(people);
     return res.status(200).json(people);
   } catch (err) {
     console.error('Error getting people:', err);
   }
 });
+
+app.post('/api/find', async (req, res) => {
+  console.log('finding user...');
+  const { name, pass } = req.body;
+  try {
+    const people = await models.User.find({ name, pass }).exec();
+    console.log(people);
+    if (people.length === 0) {
+      return res.status(200).json({ hi: 'hi' });
+    }
+    res.cookie('codesmith', 'hi');
+    return res.status(200).json({ hi: 'go' })
+  } catch (err) {
+    console.error('Error getting people:', err);
+  }
+});
+
+app.post('/api/make', async (req, res) => {
+  console.log('Making user...');
+  const { name, pass } = req.body;
+  try {
+    const people = await models.User.create({ name, pass });
+    console.log(people);
+    if (people.length === 0) {
+      return res.status(200).json({ hi: 'notcreated?' });
+    }
+    res.cookie('codesmith', 'hi');
+    return res.status(200).json({ hi: 'created' })
+  } catch (err) {
+    console.error('Error getting people:', err);
+  }
+});
+
+
+
+
 
 // app.use('/api/Misc', (req, res) =>
 //   res.status(404).send("This is not the page you're looking for...")

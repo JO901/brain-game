@@ -7,12 +7,13 @@ const Nav = () => {
       <Link className='link' to={'/'}>
         Home
       </Link>
-      <Link className='link' to={'/Main'}>
+      <Link className='link' to={'/Misc'}>
         Play!
       </Link>
       <Link className='auth link' to={'/Misc'}>
-        SignUp
+        Login
       </Link>
+      <Link className='link' to={'/Login'}>SignUp</Link>
     </div>
   );
 };

@@ -64,30 +64,30 @@ function Main() {
     const cube3 = createCube('red');
     const cube4 = createCube('purple');
     const cube5 = createCube('blue');
-    const cube6 = createCube('red');
+    const cube6 = createCube('LightSteelBlue');
     const cube9 = createCube('purple');
     const cube7 = createCube('blue');
     const cube8 = createCube('red');
 
-    const cube10 = createCube('purple');
+    const cube10 = createCube('grey');
     const cube11 = createCube('blue');
     const cube12 = createCube('red');
-    const cube13 = createCube('purple');
-    const cube14 = createCube('blue');
-    const cube15 = createCube('red');
-    const cube16 = createCube('purple');
+    const cube13 = createCube('Crimson');
+    const cube14 = createCube('DeepPink');
+    const cube15 = createCube('LemonChiffon');
+    const cube16 = createCube('Chartreuse');
     const cube17 = createCube('blue');
     const cube18 = createCube('red');
 
     const cube19 = createCube('purple');
-    const cube20 = createCube('blue');
-    const cube21 = createCube('red');
-    const cube22 = createCube('purple');
-    const cube23 = createCube('blue');
-    const cube24 = createCube('red');
-    const cube25 = createCube('purple');
-    const cube26 = createCube('blue');
-    const cube27 = createCube('red');
+    const cube20 = createCube('DarkSlateBlue');
+    const cube21 = createCube('Plum');
+    const cube22 = createCube('Brown');
+    const cube23 = createCube('DarkCyan');
+    const cube24 = createCube('Gold');
+    const cube25 = createCube('BurlyWood');
+    const cube26 = createCube('AntiqueWhite');
+    const cube27 = createCube('Maroon');
 
     cube2.position.set(1, 0, 0);
     cube3.position.set(-1, 0, 0);
@@ -193,6 +193,12 @@ function Main() {
       if (intersects.length > 0) {
         if (intersects[0].object) {
           console.log(intersects[0].object);
+          document.querySelector('.popup').style.visibility = 'visible';
+
+          setTimeout(() => {
+            console.log('Delayed for 1 second.');
+            document.querySelector('.popup').style.visibility = 'hidden';
+          }, '1000');
         }
       }
     }
@@ -212,10 +218,9 @@ function Main() {
     animate();
 
     return () => {
-        // Anything in here is fired on component unmount.
-        document.body.removeChild(renderer.domElement);
-    }
-
+      // Anything in here is fired on component unmount.
+      document.body.removeChild(renderer.domElement);
+    };
   }, []);
 
   const containerStyle = {
@@ -227,7 +232,10 @@ function Main() {
 
   return (
     <div>
-      <canvas id='canvas'/>
+      <canvas id='canvas' />
+      <div className='popup' style={{ visibility: 'hidden', color: 'red' }}>
+        <p>Hi?</p>
+      </div>
     </div>
   );
 }
