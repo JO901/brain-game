@@ -1,17 +1,28 @@
 const path = require('path');
 const htmlplugin = require('html-webpack-plugin');
+const { type } = require('os');
 
 module.exports = {
   entry: './frontend/main.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
   },
   mode: 'development',
-  plugins: [new htmlplugin({
-    template: "./frontend/main.html"
-    })],
+  plugins: [
+    new htmlplugin({
+      template: './frontend/main.html',
+    }),
+  ],
   devServer: {
+    historyApiFallback: true,
+    proxy: [
+      {
+        context: ['/api'],
+        target: 'http://localhost:3000',
+      },
+    ],
     static: {
       directory: path.join(__dirname, './build'),
     },
@@ -30,20 +41,15 @@ module.exports = {
           },
         },
       },
-      /**
-       * get css working!
-       */
-      //   {
-      //     // added the dollar sign
-      //     test: /\.scss$/,
-      //     use: {
-      //       loader: 'css-loader',
-      //       options: {
-      //         // targets: 'defaults',
-      //         presets: ['sass-loader'],
-      //       },
-      //     },
-      //   }
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
+        // added the dollar sign
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
 };

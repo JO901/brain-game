@@ -11,3 +11,5 @@ color with redux
 
 ## Goals
 favicon
+
+solving it changes the color 
